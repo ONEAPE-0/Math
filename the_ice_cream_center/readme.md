@@ -1,0 +1,2 @@
+The goal is to come up with a concise method for determining the icecream center of a given triangle.
+This is the accociated notion documentation: (https://www.notion.so/oneape/The-IceCream-Center-7d7967361c9c4df3924b85efd08109b4?pvs=4)
