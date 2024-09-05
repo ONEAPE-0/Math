@@ -130,4 +130,3 @@ dmypy.json
 media/
 
 # Ignore environment.yml to avoid conflicts with `conda env export`.
-environment.yaml
