@@ -1,0 +1,150 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\fontsize{8}{10}\selectfont
+
+\section*{Midterm Study Notes}
+
+\subsection*{Section 2.2 \& 2.3 Topics}
+
+\textbf{1. Definition of \(\mathbf{a \mid b}\).}\\
+For integers \( a \) and \( b \), \( a \mid b\) if there exists an integer \( k \) such that \( b = ak \). Example: \(4 \mid 20\) because \(20 = 4 \cdot 5\), but \(4 \nmid 18\).
+
+\textbf{2. Simple Properties of Division.}\\
+Using \( a \mid b \iff b = a k\):
+\begin{itemize}
+\item \emph{Transitivity}: If \(a \mid b\) and \(b \mid c\), then \(a \mid c\).
+\item \emph{Additivity}: If \(a \mid b\) and \(a \mid c\), then \(a \mid (b + c)\).
+\item \emph{Cancellation}: If \(a \mid b\) and \(a \mid c\), then \(a \mid (mb + nc)\) for any integers \(m,n\).
+\end{itemize}
+
+\textbf{3. Division Algorithm.}\\
+For \(a\) and \(b \neq 0\), there exist unique \(q,r\) with \(0 \le r < |b|\) such that
+\[
+a = bq + r.
+\]
+Example: \(23 = 5 \cdot 4 + 3\).
+
+\textbf{4. Euclidean Algorithm (Finding \(\gcd(a,b)\)).}\\
+Repeatedly apply the Division Algorithm:
+\[
+\gcd(a,b) = \gcd(b,r),
+\]
+until remainder \(=0\). Example: \(\gcd(48,18)\): 
+\[
+48 = 18 \cdot 2 + 12,\quad 18 = 12 \cdot 1 + 6,\quad 12 = 6 \cdot 2 + 0 \implies \gcd(48,18)=6.
+\]
+
+\textbf{5. Extended Euclidean Algorithm (Solving \(ax + by = \gcd(a,b)\)).}\\
+Keep track of remainders to express \(\gcd(a,b)\) as \(ax + by\). Example: \(\gcd(48,18)=6\).
+\[
+48 = 18\cdot 2 + 12 \quad \Rightarrow \quad 12 = 48 - 2 \cdot 18,
+\]
+\[
+18 = 12\cdot 1 + 6 \quad \Rightarrow \quad 6 = 18 - 12 = 18 - (48 - 2 \cdot 18) = 3 \cdot 18 - 48.
+\]
+Hence \(6=(-1)\cdot48 + 3\cdot18\), so \(x=-1,y=3\).
+
+\textbf{6. Finding All Divisors of an Integer.}\\
+Example: For \(36\), the positive divisors are \(\{1,2,3,4,6,9,12,18,36\}\). Negatives are their negatives.
+
+\textbf{7. Fundamental Theorem of Arithmetic (Prime Factorization).}\\
+Every positive integer has a unique prime factorization. Example: \(84 = 2^2 \times 3 \times 7\).
+
+\textbf{8. Definition of \(\mathbf{a \equiv b \pmod{m}}\).}\\
+\(a \equiv b \pmod{m}\) if \(m \mid (a - b)\). Equivalently, \(a\) and \(b\) have the same remainder mod \(m\). Example: \(14 \equiv 2 \pmod{4}\).
+
+\textbf{9. Simple Properties of Congruences.}\\
+If \(a \equiv b \pmod{m}\) and \(c \equiv d \pmod{m}\), then:
+\begin{itemize}
+\item \(a + c \equiv b + d \pmod{m}\).
+\item \(ac \equiv bd \pmod{m}\).
+\item \(-a \equiv -b \pmod{m}\).
+\end{itemize}
+
+\textbf{10. Modular Arithmetic in \(\mathbf{Z}/m\mathbf{Z}\).}\\
+\(\mathbb{Z}/m\mathbb{Z} = \{ [0],[1],\ldots,[m-1] \}\). Operations:
+\[
+[a] + [b] = [a+b], \quad -[a] = [-a], \quad [a]\cdot[b] = [ab].
+\]
+Example: In \(\mathbb{Z}/5\mathbb{Z}\), \([2] + [4] = [6] = [1]\).
+
+\textbf{11. Inverses in \(\mathbf{Z}/m\mathbf{Z}\) Using Extended Euclidean Algorithm.}\\
+If \(\gcd(a,m)=1\), then \([a]\) has a multiplicative inverse in \(\mathbb{Z}/m\mathbb{Z}\). Example: In \(\mathbb{Z}/7\mathbb{Z}\), to find \([3]^{-1}\), solve \(3x+7y=1\). One solution is \(x=5\), so \([3]^{-1}=[5]\).
+
+\subsection*{Section 3.1 Topics}
+
+\textbf{1. Definition of \(\operatorname{Sym}(X)\).}\\
+\(\operatorname{Sym}(X)\) is the set of all bijective functions \(f: X \to X\). It forms a group under composition. Example: if \(X = \{1,2,3\}\), any permutation (rearrangement) is in \(\operatorname{Sym}(X)\).
+
+\textbf{2. Notations for Permutations in \(S_n\).}\\
+\emph{Two-row notation}:
+\[
+\sigma = \begin{pmatrix}1 & 2 & 3 & \dots & n \\ \sigma(1) & \sigma(2) & \sigma(3) & \dots & \sigma(n)\end{pmatrix}.
+\]
+\emph{Cycle notation}: \((a_1\,a_2 \dots a_r)\) means \(\sigma(a_1)=a_2, \sigma(a_2)=a_3,\dots,\sigma(a_r)=a_1\).
+Example: 
+\[
+\sigma=\begin{pmatrix}1 & 2 & 3 & 4 \\ 3 & 1 & 4 & 2\end{pmatrix} 
+= (1\,3\,4\,2).
+\]
+
+\textbf{3. Composing Two Permutations.}\\
+\(\tau \circ \sigma\) means apply \(\sigma\) first, then \(\tau\). Example:
+\[
+\sigma=\begin{pmatrix}1 & 2 & 3 \\ 2 & 3 & 1\end{pmatrix},
+\quad
+\tau=\begin{pmatrix}1 & 2 & 3 \\ 3 & 1 & 2\end{pmatrix}.
+\]
+Then \(\tau(\sigma(1)) = \tau(2)=1,\;\tau(\sigma(2))=\tau(3)=2,\;\tau(\sigma(3))=\tau(1)=3\). So \(\tau\circ\sigma = (1\,2\,3)\).
+
+\textbf{4. More Complicated Permutation Compositions.}\\
+\emph{Cycle Inverse}: \((a_1\,a_2\,\dots a_r)^{-1} = (a_r\, a_{r-1}\,\dots\,a_1)\).\\
+\emph{Conjugation}: \(\tau(a_1\,a_2\,\dots a_r)\tau^{-1} = (\tau(a_1)\,\tau(a_2)\,\dots\,\tau(a_r))\).
+Example: \((1\,2\,3)^{-1}=(3\,2\,1)\).
+
+\subsection*{Section 3.2, 3.3, 4.1 Topics}
+
+\textbf{1. Axioms of Semigroups, Monoids, and Groups.}\\
+\begin{itemize}
+\item \emph{Semigroup}: A set \(S\) with an associative binary operation.
+\item \emph{Monoid}: A semigroup with identity \(e\) where \(e \cdot a=a \cdot e=a\).
+\item \emph{Group}: A monoid in which every element has an inverse.
+\end{itemize}
+
+\textbf{2. Proving Simple Properties from Axioms.}\\
+Example: from associativity and inverses, we get \emph{cancellation}: if \(ab=ac\), then \(b=c\). In \((\mathbb{Z},+)\), identity is \(0\), inverse of \(a\) is \(-a\).
+
+\textbf{4. The Dihedral Group \(\mathbf{D_n}\).}\\
+Group of symmetries of a regular \(n\)-gon:
+\[
+D_n = \{1, r, r^2,\dots,r^{n-1}, s, sr, sr^2,\dots,sr^{n-1}\},
+\quad r^n=1,\; s^2=1,\; srs=r^{-1}.
+\]
+Interpretation: \(r\) is rotation by \(360^\circ/n\); \(s\) a reflection. Example: \(D_4\) (square) has 8 elements: \(\{1,r,r^2,r^3,s,sr,sr^2,sr^3\}\).
+
+\textbf{5. Definition of a Subgroup.}\\
+\(H \subseteq G\) is a subgroup if:
+\begin{itemize}
+\item \(H\neq \emptyset\),
+\item If \(a,b \in H\), then \(ab \in H\),
+\item If \(a\in H\), then \(a^{-1}\in H\).
+\end{itemize}
+
+\textbf{6. Using the Subgroup Criterion to Find All Subgroups.}\\
+Example: In \(\mathbb{Z}_{12}\) under addition, subgroups are \(\langle d\rangle\) for each \(d\) dividing 12. E.g. \(\langle4\rangle=\{0,4,8\}\).
+
+\textbf{7. Order of an Element.}\\
+The order of \(a\) is the smallest positive integer \(n\) such that \(a^n=e\). Also the size of the cyclic subgroup generated by \(a\). Example: In \((\mathbb{Z}/12\mathbb{Z},+)\), \([3]\) has order 4 because \(3 \cdot 4=12\equiv0\pmod{12}\).
+
+\textbf{8. Left Coset \(\mathbf{aH}\).}\\
+If \(H\) is a subgroup of \(G\) and \(a\in G\), then \(aH=\{ah : h\in H\}\). Example: In \(\mathbb{Z}_{12}\), \(H=\{0,4,8\}\), then \([3]+H=\{[3],[7],[11]\}\).
+
+\textbf{9. Lagrange’s Theorem.}\\
+If \(H\) is a finite subgroup of \(G\), \(|H|\) divides \(|G|\). Thus if \(|G|=12\), subgroups can only have sizes dividing 12: \(1,2,3,4,6,12\).
+
+\end{document}
